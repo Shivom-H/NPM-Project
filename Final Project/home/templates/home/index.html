@@ -1,0 +1,262 @@
+{% extends "html/basic.html" %}
+
+{% block title %}
+  Home
+{% endblock title %}
+
+{% block css %}
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('https://thumbs.dreamstime.com/z/business-team-to-calculate-financial-information-to-invest-new-projects-business-team-to-calculate-financial-information-to-160173376.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+  background-image: url("/w3images/parallax2.jpg");
+  min-height: 400px;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+.main-heading{
+  padding:250px;
+  margin-top:-85px;
+  color:transparent;
+}
+.main-heading:hover{
+  color:black;
+  transition: all .7s;
+  background-color:rgba(48, 45, 45,0.7);
+  color:white;
+}
+.card{
+  border-radius: 4px;
+  background-color: rgba(3, 71, 87, 0.4);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  cursor: pointer;
+}
+h1:hover{
+  text-shadow: 1px 2px red;
+}
+.card:hover{
+   transform: scale(1.05);
+   box-shadow: 5px 7px rgba(44, 44, 44, 0.5);
+   background-color:rgba(0,0,0,0.6);
+   transition: all .3s;
+}
+.custom-bars:hover{
+  box-shadow: 6px 8px rgba(44, 44, 44, 0.6);
+  border:2px black;
+  background-color: rgb(19, 26, 29);
+  transition: all .6s;
+}
+
+.custom-last-ban{
+  color:white;
+  padding:20px 30px 20px 20px;
+  background-color:rgba(0,0,0,0.2);
+}
+.custom-last-ban:hover{
+  box-shadow: 6px 8px rgba(44, 44, 44, 0.6);
+  border:2px black;
+  transition: all .6s;
+  background-color:rgba(0,0,0,0.6);
+}
+
+{% endblock css %}
+
+{% block body %}
+  
+<main role="main">
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1" id="home">   
+    <div class="main-heading"> 
+        {% if user.is_authenticated  %}
+        <h1>Welcome {{request.user.first_name}}</h1>
+        <p style="font-size: 25px;">This is our website where one can view different projects, try them, execute them, and get remarks and suggestions for their further improvement.</p>
+        {% else %}
+        <h1>Welcome</h1>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center text-white">ABOUT US</h3>
+  <h5 class="w3-center text-white"><em>Web Development</em></h5>
+    <br>
+    <div class="w3-row">
+    <div class="w3-col m6 w3-center text-light d-flex justify-content-start w3-padding-large"> 
+      <div class="card custom-home-card" style="width: 30rem;">
+        <img src="https://images.ctfassets.net/hrltx12pl8hq/1b7IEjX4cVDUqYg13qqBuK/f9256493575179ce89a285e49128fc4d/08-business_1233587863.jpg?fit=fill&w=480&h=270" style="width: 423px;">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa fa-user w3-margin-right"></i>{{request.user.username}}</h5>
+          <p class="card-text" style="font-size: 18px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="/project/" class="btn btn-primary">Projects</a>
+        </div>
+      </div>     
+    </div>
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large text-light" style="font-size: 18px;">
+      <p>Welcome to our website. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+
+<br>  
+<br>
+
+  <h1 class="w3-large w3-center w3-padding-16 text-white">Learn About</h1>
+    <div class="custom-graph-bar" style="margin-bottom:-20px;">  
+      <b><p><i class="fa fa-laptop text-light"> Web Design</i></p>
+      <div class="w3-light-grey my-3 custom-bars" style="border-radius: 5px;">
+        <div class="w3-container text-light w3-padding-small w3-center" style="width:85%; height:40px; background:linear-gradient(to right,rgb(11, 45, 107),rgb(55, 182, 221)); margin-top:-10px; margin-bottom:15px;">85%</div>
+      </div>
+      <p><i class="fa fa-camera text-light"> Photography</i></p>
+      <div class="w3-light-grey my-3 custom-bars" style="border-radius: 5px;">
+        <div class="w3-container text-light w3-padding-small w3-center" style="width:60%; height:40px; background:linear-gradient(to right, rgb(11, 45, 107),rgb(55, 182, 221)); margin-top:-10px; margin-bottom:15px;">60%</div>
+      </div>
+      <p><i class="fa fa-photo text-light"> Business Management</i></p>
+      <div class="w3-light-grey my-3 custom-bars" style="border-radius: 5px;">
+        <div class="w3-container text-light w3-padding-small w3-center" style="width:75%; height:40px; background:linear-gradient(to right, rgb(11, 45, 107),rgb(55, 182, 221)); margin-top:-10px; margin-bottom:15px;">75%</div>
+      </div>
+      </div>
+      </b>
+    </div>
+  
+    <div class="container text-light custom-last-ban">
+    <ul>
+      <li><h1>Web Designing</h1></li>
+      <h5>Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development rather than software development. Web design used to be focused on designing websites for desktop browsers; however, since the mid-2010s, design for mobile and tablet browsers has become ever-increasingly important.</h5>
+      <li><h1>Photography</h1></li>
+      <h5>Photography is the art of capturing light with a camera, usually via a digital sensor or film, to create an image. With the right camera equipment, you can even photograph wavelengths of light invisible to the human eye, including UV, infrared, and radio.</h5>
+      <li><h1>Business Management</h1></li>
+      <h5>Business Management is that branch of education which provides knowledge and training pertaining to planning, execution, supervision and analysis of a business enterprise. In this field of education, one learns about the establishment of a company or an organisation, and various functional levels such as production, financial, administrative, human resources, sales & marketing and others.</h5>
+    </ul>
+    </div>
+    <br>
+    <br>
+
+
+<footer class="text-center text-white" style="background-color: #024855;">
+  <!-- Grid container -->
+  <div class="container pt-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-white m-1"
+        href=""
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-white m-1"
+        href=""
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-white m-1"
+        href=""
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-white m-1"
+        href=""
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-white m-1"
+        href=""
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-white m-1"
+        href=""
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-white" href="">Shivom</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+</main>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+</script>
+
+
+{% endblock body %}
