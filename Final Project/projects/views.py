@@ -196,7 +196,7 @@ def RemarksForm(request,id):
    
 def contactUs(request):
     
-    return render(request,"projects\contactus.html")
+    return render(request,"projects/contactus.html")
 
 def contactSubmit(request):
     email = request.POST.get("email")
